@@ -1,0 +1,34 @@
+name: watch
+on:
+  repository_dispatch:
+    types: [watch]
+permissions:
+  contents: write
+concurrency:
+  group: watch
+  cancel-in-progress: false
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: save watch.json
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          node -e '
+            const p = JSON.parse(process.env.PAYLOAD || "{}");
+            const temp = [];
+            for (const g of String(p.temp || "").split(";").filter(Boolean)) {
+              const [d, ids] = g.split("=");
+              for (const id of String(ids || "").split(",").filter(Boolean)) temp.push([id, (+d) * 86400 + 86399]);
+            }
+            const w = { updatedAt: p.updatedAt || 0, keywords: p.keywords || [], channels: p.channels || [], pin: String(p.pin || "").split(",").filter(Boolean), temp };
+            require("fs").writeFileSync("watch.json", JSON.stringify(w, null, 1));
+            console.log("keywords", w.keywords.length, "channels", w.channels.length, "pin", w.pin.length, "temp", temp.length);
+          '
+          git config user.name "kpac-tracker"
+          git config user.email "kpac-tracker@users.noreply.github.com"
+          git add watch.json
+          git diff --cached --quiet || (git commit -qm "app watch update" && (git push -q || (git pull -q --rebase && git push -q)))
