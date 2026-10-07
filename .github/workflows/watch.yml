@@ -24,7 +24,7 @@ jobs:
               const [d, ids] = g.split("=");
               for (const id of String(ids || "").split(",").filter(Boolean)) temp.push([id, (+d) * 86400 + 86399]);
             }
-            const w = { updatedAt: p.updatedAt || 0, keywords: p.keywords || [], channels: p.channels || [], pin: String(p.pin || "").split(",").filter(Boolean), temp };
+            const w = { updatedAt: p.updatedAt || 0, keywords: p.keywords || [], channels: p.channels || [], pin: String(p.pin || "").split(",").filter(Boolean), tr: String(p.tr || "").split(",").filter(Boolean), temp };
             require("fs").writeFileSync("watch.json", JSON.stringify(w, null, 1));
             console.log("keywords", w.keywords.length, "channels", w.channels.length, "pin", w.pin.length, "temp", temp.length);
           '
