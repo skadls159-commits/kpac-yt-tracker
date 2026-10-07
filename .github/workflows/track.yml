@@ -24,6 +24,7 @@ jobs:
           git fetch origin data --depth=1 || true
           git show origin/data:yt_data.json > prev.json 2>/dev/null || echo '{}' > prev.json
           git show origin/data:hot.json > prev_hot.json 2>/dev/null || echo '{}' > prev_hot.json
+          git show origin/data:transcripts.json > prev_tr.json 2>/dev/null || echo '{}' > prev_tr.json
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -32,12 +33,14 @@ jobs:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           FORCE_DISCOVER: ${{ github.event.inputs.discover }}
         run: node tracker.mjs
+      - name: transcripts
+        run: node transcript.mjs || cp prev_tr.json out/transcripts.json
       - name: publish data branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p /tmp/pub
-          cp out/yt_data.json out/hot.json /tmp/pub/
+          cp out/yt_data.json out/hot.json out/transcripts.json /tmp/pub/
           cd /tmp/pub
           git init -q -b data
           git config user.name "kpac-tracker"
