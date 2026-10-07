@@ -56,13 +56,13 @@ function addPoint(v, views) {
   const s = v.s || (v.s = []);
   const last = s[s.length - 1];
   if (last && last[0] === HOUR) last[1] = views; else s.push([HOUR, views]);
-  // 72시간 이내는 전부, 그 이전은 하루 1개만
-  const cut = HOUR - 72; const out = []; const seenDay = new Set();
+  // 36시간 이내는 전부(1시간 단위), 그 이전은 하루 1개만
+  const cut = HOUR - 36; const out = []; const seenDay = new Set();
   for (const p of s) {
     if (p[0] >= cut) { out.push(p); continue; }
     const d = Math.floor(p[0] / 24); if (seenDay.has(d)) { out[out.length - 1] = p; continue; } seenDay.add(d); out.push(p);
   }
-  v.s = out.slice(-90);
+  v.s = out.slice(-80);
 }
 function track(id, src, until, extra = {}) {
   const v = db.videos[id] || (db.videos[id] = { s: [], src: '', until: 0 });
@@ -99,9 +99,9 @@ async function main() {
   for (const id of pinned) track(id, 'p', NOW + 3650 * DAY);
   for (const [id, until] of (watch.temp || [])) if (until > NOW) track(id, 'w', until);
 
-  // 2) 레퍼런스 채널 최신 영상 (매 회차)
+  // 2) 레퍼런스 채널 최신 영상 (2시간마다)
   const newIds = new Set();
-  await pool(refCh, 6, async (ch) => {
+  await pool(HOUR % 2 === 0 || FORCE ? refCh : [], 6, async (ch) => {
     const c = db.channels[ch]; const up = c?.up || ('UU' + ch.slice(2));
     const j = await api('playlistItems', { part: 'contentDetails', playlistId: up, maxResults: 15 });
     for (const it of j?.items || []) {
@@ -173,7 +173,9 @@ async function main() {
     ids.sort((a, b) => score(b) - score(a)); for (const id of ids.slice(MAX_TRACK)) delete db.videos[id]; ids = ids.slice(0, MAX_TRACK);
   }
   const doneNow = new Set(needMeta);
-  const refresh = ids.filter(id => !doneNow.has(id) && db.videos[id].s?.[db.videos[id].s.length - 1]?.[0] !== HOUR);
+  // 게시 7일 이내·수집 영상은 매시간, 그 외는 3시간마다
+  const refresh = ids.filter(id => { const v = db.videos[id]; if (doneNow.has(id) || v.s?.[v.s.length - 1]?.[0] === HOUR) return false;
+    const young = v.p && NOW - v.p < 7 * DAY; return young || pinned.has(id) || HOUR % 3 === 0 || FORCE; });
   await pool(chunk(refresh, 50), 6, async (part) => {
     const j = await api('videos', { part: 'statistics', id: part.join(','), maxResults: 50 });
     for (const it of j?.items || []) { const v = db.videos[it.id]; if (!v) continue; addPoint(v, +(it.statistics.viewCount || 0)); v.l = it.statistics.likeCount != null ? +it.statistics.likeCount : v.l; v.m = it.statistics.commentCount != null ? +it.statistics.commentCount : v.m; }
