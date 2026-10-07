@@ -1,7 +1,7 @@
 name: track
 on:
   schedule:
-    - cron: '7 */2 * * *'
+    - cron: '7 * * * *'
   workflow_dispatch:
     inputs:
       discover:
@@ -47,7 +47,7 @@ jobs:
           git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data
       - name: weekly keepalive
         run: |
-          if [ "$(date -u +%u)" = "1" ] && [ "$(date -u +%H)" -lt "2" ]; then
+          if [ "$(date -u +%u)" = "1" ] && [ "$(date -u +%H)" = "00" ]; then
             date -u +%Y-%m-%dT%H:%MZ > last_run.txt
             git config user.name "kpac-tracker"
             git config user.email "kpac-tracker@users.noreply.github.com"
