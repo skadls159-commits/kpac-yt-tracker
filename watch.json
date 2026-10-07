@@ -1,0 +1,64 @@
+{
+ "updatedAt": 1791385131,
+ "keywords": [
+  {
+   "q": "정책자금",
+   "mode": "topic"
+  },
+  {
+   "q": "정책자금 대출",
+   "mode": "topic"
+  },
+  {
+   "q": "소상공인 대출",
+   "mode": "topic"
+  },
+  {
+   "q": "사업자대출",
+   "mode": "topic"
+  },
+  {
+   "q": "정부지원금",
+   "mode": "topic"
+  },
+  {
+   "q": "창업자금",
+   "mode": "topic"
+  },
+  {
+   "q": "자영업 폐업",
+   "mode": "topic"
+  },
+  {
+   "q": "자영업 현실",
+   "mode": "topic"
+  },
+  {
+   "q": "은행 대출 거절",
+   "mode": "topic"
+  },
+  {
+   "q": "운동",
+   "mode": "struct"
+  },
+  {
+   "q": "재테크",
+   "mode": "struct"
+  },
+  {
+   "q": "부동산",
+   "mode": "struct"
+  },
+  {
+   "q": "건강",
+   "mode": "struct"
+  },
+  {
+   "q": "자기계발",
+   "mode": "struct"
+  }
+ ],
+ "channels": [],
+ "pin": [],
+ "temp": []
+}
