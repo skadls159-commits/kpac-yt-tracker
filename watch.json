@@ -1,5 +1,5 @@
 {
- "updatedAt": 1791427321,
+ "updatedAt": 1791438824,
  "keywords": [
   {
    "mode": "topic",
@@ -72,7 +72,11 @@
    "set": "main"
   }
  ],
- "channels": [],
+ "channels": [
+  "UC3kRdLEVPaFmr3obvmNafNA",
+  "UC4LYHNd74SEfVzn_BC2gL8g",
+  "UCkA6KFq2mI76yexZAqX8dDA"
+ ],
  "ads": [
   {
    "id": "main",
@@ -85,22 +89,31 @@
     "창업자금",
     "경영컨설팅"
    ],
-   "brands": []
-  },
-  {
-   "id": "smuyxkmxz",
-   "name": "법무법인",
-   "kw": [
-    "개인회생",
-    "법무법인",
-    "채무조정"
-   ],
    "brands": [
-    "법무법인 메이트윈"
+    "한국정책자금지원센터"
    ]
   }
  ],
- "pin": [],
+ "pin": [
+  "qcMZbH8a5yk",
+  "f98KKAJ0gek",
+  "ZWMHo4QcX98",
+  "-i6_z6A2bMI",
+  "IPNxOgH1jGg",
+  "umHuio2tvSQ",
+  "LzmBpyiFr1Q",
+  "dPVm_lPtRCY",
+  "HyfVuLEtkv8",
+  "587J2vqXiDw",
+  "INXxVOOuYWw",
+  "FK2Je16ztd0",
+  "E2Fc2D33c5M",
+  "bww8jSF6ykQ",
+  "2wZgDvG527Q",
+  "ZSlp52IDzu0",
+  "wWWUbgqWzSI",
+  "jGNJyHvd4oc"
+ ],
  "tr": [],
  "temp": []
 }
