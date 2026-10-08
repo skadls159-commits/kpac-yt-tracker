@@ -1,90 +1,78 @@
 {
- "updatedAt": 1791390693,
+ "updatedAt": 1791427321,
  "keywords": [
   {
    "mode": "topic",
-   "q": "정책자금"
+   "q": "정책자금",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "정책자금 대출"
+   "q": "정책자금 대출",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "소상공인 대출"
+   "q": "소상공인 대출",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "사업자대출"
+   "q": "사업자대출",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "정부지원금"
+   "q": "정부지원금",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "창업자금"
+   "q": "창업자금",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "자영업 폐업"
+   "q": "자영업 폐업",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "자영업 현실"
+   "q": "자영업 현실",
+   "set": "main"
   },
   {
    "mode": "topic",
-   "q": "은행 대출 거절"
+   "q": "은행 대출 거절",
+   "set": "main"
   },
   {
    "mode": "struct",
-   "q": "운동"
+   "q": "운동",
+   "set": "main"
   },
   {
    "mode": "struct",
-   "q": "재테크"
+   "q": "재테크",
+   "set": "main"
   },
   {
    "mode": "struct",
-   "q": "부동산"
+   "q": "부동산",
+   "set": "main"
   },
   {
    "mode": "struct",
-   "q": "건강"
+   "q": "건강",
+   "set": "main"
   },
   {
    "mode": "struct",
-   "q": "자기계발"
+   "q": "자기계발",
+   "set": "main"
   }
  ],
- "channels": [
-  "UC3kRdLEVPaFmr3obvmNafNA",
-  "UCeFiKG5t8-yIRiXW4cMj6fA",
-  "UCkA6KFq2mI76yexZAqX8dDA"
- ],
- "pin": [
-  "qcMZbH8a5yk",
-  "f98KKAJ0gek",
-  "ZWMHo4QcX98",
-  "-i6_z6A2bMI",
-  "IPNxOgH1jGg",
-  "umHuio2tvSQ",
-  "LzmBpyiFr1Q",
-  "dPVm_lPtRCY",
-  "HyfVuLEtkv8",
-  "587J2vqXiDw",
-  "INXxVOOuYWw",
-  "FK2Je16ztd0",
-  "E2Fc2D33c5M",
-  "bww8jSF6ykQ",
-  "2wZgDvG527Q",
-  "ZSlp52IDzu0",
-  "wWWUbgqWzSI",
-  "jGNJyHvd4oc"
- ],
- "tr": [],
- "temp": [],
+ "channels": [],
  "ads": [
   {
    "id": "main",
@@ -97,9 +85,22 @@
     "창업자금",
     "경영컨설팅"
    ],
+   "brands": []
+  },
+  {
+   "id": "smuyxkmxz",
+   "name": "법무법인",
+   "kw": [
+    "개인회생",
+    "법무법인",
+    "채무조정"
+   ],
    "brands": [
-    "한국정책자금지원센터"
+    "법무법인 메이트윈"
    ]
   }
- ]
+ ],
+ "pin": [],
+ "tr": [],
+ "temp": []
 }
