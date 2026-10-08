@@ -93,7 +93,7 @@ async function main() {
   const t0 = Date.now();
   const pinned = new Set(watch.pin || []);
   const refCh = (watch.channels || []).slice(0, 100);
-  const keywords = (watch.keywords || []).slice(0, 30);
+  const keywords = (watch.keywords || []).slice(0, 60);
 
   // 1) 앱이 보낸 추적 요청
   for (const id of pinned) track(id, 'p', NOW + 3650 * DAY);
